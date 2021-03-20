@@ -4,7 +4,7 @@ include_once('glava.php');
 // Funkcija prebere oglase iz baze in vrne polje objektov
 function get_oglasi(){
 	global $conn;
-	$query = "SELECT * FROM ads ORDER BY expires DESC;"; //Sortitanje po datumu oddaje
+	$query = "SELECT * FROM ads ORDER BY expires DESC;";
 	$res = $conn->query($query);
 	$oglasi = array();
 	while($oglas = $res->fetch_object()){

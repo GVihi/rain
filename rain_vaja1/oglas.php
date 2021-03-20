@@ -5,7 +5,7 @@ include_once('glava.php');
 function get_ad($id){
 	global $conn;
 	$id = mysqli_real_escape_string($conn, $id);
-	$query = "SELECT ads.*, users.username FROM ads LEFT JOIN users ON users.id = ads.user_id WHERE ads.id = $id;";
+	$query = "SELECT ads.*, users.username, users.email FROM ads LEFT JOIN users ON users.id = ads.user_id WHERE ads.id = $id;";
 	$res = $conn->query($query);
 	if($obj = $res->fetch_object()){
 		return $obj;
@@ -28,9 +28,11 @@ $img_data = base64_encode($oglas->image);
 ?>
 	<div class="oglas">
 		<h4><?php echo $oglas->title;?></h4>
-		<p><?php echo $oglas->description;?></p>
-		<img src="data:image/jpg;base64, <?php echo $img_data;?>" width="400"/>
-		<p>Objavil: <?php echo $oglas->username; ?></p>
+		<p>Opis:<?php echo $oglas->description;?></p>
+		<p>Kategorija: <?php echo $oglas->category;?></p>
+		<p>Objavil:<?php echo $oglas->username;?></p>
+		<p>Kontakt: <?php echo $oglas->email;?></p>
+		<img src="data:image/jpg;base64, <?php echo $img_data;?>" width="400"/><br> <br>
 		<?php
 		if(isset($_SESSION)){
 			if($_SESSION["USER_NAME"] == $oglas->username){

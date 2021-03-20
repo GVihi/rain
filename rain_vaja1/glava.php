@@ -25,13 +25,16 @@
 			if(isset($_SESSION["USER_ID"])){
 				?>
 				<li><a href="objavi.php">Objavi oglas</a></li>
+				<li><a href="mojioglasi.php">Moji oglasi</a></li>
 				<li><a href="odjava.php">Odjava</a></li>
+				<li><a href="iskanje.php">Iskanje</a></li>
 				<?php
 				echo "Hello " . $_SESSION["USER_NAME"];
 			} else{
 				?>
 				<li><a href="prijava.php">Prijava</a></li>
 				<li><a href="registracija.php">Registracija</a></li>
+				<li><a href="iskanje.php">Iskanje</a></li>
 				<?php
 			}
 			?>
