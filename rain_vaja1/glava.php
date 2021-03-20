@@ -1,3 +1,14 @@
+<head>
+<style>
+div {
+	border: 1px solid black;
+	padding: 5px;
+	width: 25%;
+	margin: 5px;
+}
+</style>
+</head>
+
 <?php
 	session_start();
 	
