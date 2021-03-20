@@ -21,5 +21,5 @@ if(!isset($_GET["id"])){
 
 $id = $_GET["id"];
 remove_ad($id);
-//header("Location: index.php");
+header("Location: index.php");
 ?>
