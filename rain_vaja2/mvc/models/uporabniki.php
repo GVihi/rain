@@ -80,5 +80,21 @@
 
         $conn->query($query);
      }
+
+     public static function prijava($username, $password){
+         $db = Db::getInstance();
+
+        $username = mysqli_real_escape_string($db, $username);
+        $password = mysqli_real_escape_string($db, $password);
+        $pass = sha1($password);
+
+        $query = "SELECT * FROM users WHERE username='$username' AND password='$pass'";
+        $result = $db->query($query);
+
+        if($user = $result->fetch_object()){
+            return $user;
+        }
+        return false;
+     }
     }
 ?>

@@ -1,3 +1,14 @@
+<?php
+	session_start();
+	
+	//Seja poteče po 30 minutah - avtomatsko odjavi neaktivnega uporabnika
+	if(isset($_SESSION['LAST_ACTIVITY']) && time() - $_SESSION['LAST_ACTIVITY'] < 1800){
+		session_regenerate_id(true);
+	}
+	$_SESSION['LAST_ACTIVITY'] = time();
+
+?>
+
 <DOCTYPE html>
   <html>
   <head>
@@ -59,8 +70,18 @@
             </ul>
             <!-- desni meni z opcijami za prijavo in registracijo in fotnawesome ikonami v znački i -->
             <ul class="navbar-nav ml-auto">
+              <?php if(isset($_SESSION['USER_ID'])){
+                  ?>
+                    <li class="nav-item"><a  class="nav-link" href="#"><i class="fas fa-user"></i><?php echo "Hello " . $_SESSION["USER_NAME"]; ?></a></li>
+                  <?php
+              } ?>
               <li class="nav-item"><a  class="nav-link" href="?controller=uporabniki&action=dodaj"><i class="fas fa-user"></i> Registracija</a></li>
-              <li class="nav-item"><a class="nav-link"  href="#"><i class="fas fa-sign-in-alt"></i> Prijava</a></li>
+              <li class="nav-item"><a  class="nav-link" href="?controller=uporabniki&action=loginform"><i class="fas fa-sign-in-alt"></i> Prijava</a></li>
+              <?php if(isset($_SESSION['USER_ID'])){
+                  ?>
+              <li class="nav-item"><a  class="nav-link" href="?controller=uporabniki&action=logout"><i class="fas fa-sign-in-alt"></i> Odjava</a></li>
+              <?php
+              } ?>
             </ul>
           </div>
         </nav>

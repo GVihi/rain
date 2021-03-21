@@ -44,6 +44,12 @@ class oglasi_controller {
       require_once('views/oglasi/uspesnoDodal.php');
     }
 
+    public function podaljsaj(){
+
+        Oglas::extendexpiration($_GET["id"]);
+
+    }
+
 
 
   }

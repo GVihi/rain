@@ -48,5 +48,5 @@
     <input type="number" name="age" class="form-control" id="exampleInputPassword1">
   </div>
   
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Poslji</button>
 </form>
