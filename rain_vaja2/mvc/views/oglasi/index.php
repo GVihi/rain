@@ -22,6 +22,9 @@
     <!-- pri vsakem oglasu dodamo povezavo na akcijo prikaži, z idjem oglasa. Uporabnik lahko tako proži novo akcijo s pritiskom na gumb.-->
     <a href='?controller=oglasi&action=prikazi&id=<?php echo $oglas->id; ?>'>Poglej vsebino</a>
 	</td>
+  <td>
+    <a href='?controller=oglasi$action=podaljsaj$id=<?php echo $oglas->id ?>'>Podaljsas zapadlost</a>
+  </td>
 	<td><?php echo $oglas->datumObjave; ?></td>
  </tr>
 <?php } ?>

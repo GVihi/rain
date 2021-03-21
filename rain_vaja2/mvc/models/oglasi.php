@@ -27,11 +27,11 @@ class Oglas {
       //dobimo objekt, ki predstavlja povezavo z bazo
     $db = Db::getInstance();
       //izvedemo query
-    $result = mysqli_query($db,'SELECT * FROM oglas');
+    $result = mysqli_query($db,'SELECT * FROM ads');
 
 //v zanki ustvarjamo nove objekte in jih dajemo v seznam
     while($row = mysqli_fetch_assoc($result)){
-      $list[] = new Oglas($row['ID'], $row['Naslov'], $row['Vsebina'],$row['DatumObjave']);
+      $list[] = new Oglas($row['id'], $row['title'], $row['description'],$row['datepublished']);
     }
     
         //statična metoda vrača seznam objektov iz baze
@@ -44,9 +44,9 @@ class Oglas {
     $id = intval($id);
     
     $db = Db::getInstance();
-    $result = mysqli_query($db,"SELECT * FROM oglas where ID=$id");
+    $result = mysqli_query($db,"SELECT * FROM ads where id=$id");
     $row = mysqli_fetch_assoc($result);
-    return new Oglas($row['ID'], $row['Naslov'], $row['Vsebina'],$row['DatumObjave']);
+    return new Oglas($row['id'], $row['title'], $row['description'],$row['datepublished']);
   }
   
 
@@ -58,7 +58,7 @@ class Oglas {
     
 	  //primer query-a s prepared statementom
 
-    if ($stmt = mysqli_prepare($db, "Insert into Oglas (Naslov,Vsebina,DatumObjave) Values (?,?,now())")) {
+    if ($stmt = mysqli_prepare($db, "Insert into ads (title, description, datepublished) Values (?,?,now())")) {
 			//dodamo parametre po vrsti namesto vprašajev
 			//s string, i integer ,d double, b blob
      mysqli_stmt_bind_param($stmt, "ss",$naslov,$vsebina);
@@ -71,6 +71,12 @@ class Oglas {
    
     //z uporabo metode najdi, najdemo celoten, na novo ustvarjen oglas, in ga vrnemo kontrolerju
    return Oglas::najdi($id);
+ }
+
+ public static function extendexpiration($id){
+    $db = Db::getInstance();
+    $query = "UPDATE ads SET expires= NOW() + INTERVAL 30 DAY WHERE id='$id';";
+    mysqli_stmt_execute($query);
  }
  
 }
