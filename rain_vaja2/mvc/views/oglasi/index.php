@@ -7,6 +7,7 @@
       <tr>
         <th>Naslov</th>
         <th>Vsebina</th>
+        <th></th>
         <th>Datum Objave</th>
       </tr>
     </thead>
@@ -23,7 +24,7 @@
     <a href='?controller=oglasi&action=prikazi&id=<?php echo $oglas->id; ?>'>Poglej vsebino</a>
 	</td>
   <td>
-    <a href='?controller=oglasi$action=podaljsaj$id=<?php echo $oglas->id ?>'>Podaljsas zapadlost</a>
+    <a href='?controller=oglasi$action=podaljsaj&id=<?php echo $oglas->id ?>'>Podaljsas zapadlost</a>
   </td>
 	<td><?php echo $oglas->datumObjave; ?></td>
  </tr>

@@ -33,8 +33,9 @@
 </script>
 
  <div id="nalozi" class="panel panel-default">
-  <div class="panel-heading"><h2><?php echo $oglas->naslov; ?></h2><span class="label label-primary"><?php echo $oglas->datumObjave; ?></span></div>
-  <div class="panel-body"><?php echo $oglas->vsebina; ?></div>
+  <div class="panel-heading"><h2><?php echo $oglas->naslov; ?></h2><span class="label label-primary">Datum objave: <?php echo $oglas->datumObjave; ?></span></div>
+  <div class="panel-body">Vsebina: <?php echo $oglas->vsebina; ?></div>
+  <img src="data:image/jpg;base64, <?php $img_data = base64_encode($oglas->image); echo $img_data;?>" width="400"/>
 
   
   <div id="komentarji">

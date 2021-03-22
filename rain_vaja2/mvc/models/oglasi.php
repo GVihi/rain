@@ -11,13 +11,15 @@ class Oglas {
   public $naslov;
   public $vsebina;
   public $datumObjave;
+  public $image;
 
   //konstruktor
-  public function __construct($id, $naslov, $vsebina,$datumObjave) {
+  public function __construct($id, $naslov, $vsebina,$datumObjave, $image) {
     $this->id      = $id;
     $this->naslov  = $naslov;
     $this->vsebina = $vsebina;
     $this->datumObjave=$datumObjave;
+    $this->image = $image;
   }
 
 
@@ -31,7 +33,7 @@ class Oglas {
 
 //v zanki ustvarjamo nove objekte in jih dajemo v seznam
     while($row = mysqli_fetch_assoc($result)){
-      $list[] = new Oglas($row['id'], $row['title'], $row['description'],$row['datepublished']);
+      $list[] = new Oglas($row['id'], $row['title'], $row['description'],$row['datepublished'], $row['image']);
     }
     
         //statična metoda vrača seznam objektov iz baze
@@ -46,7 +48,7 @@ class Oglas {
     $db = Db::getInstance();
     $result = mysqli_query($db,"SELECT * FROM ads where id=$id");
     $row = mysqli_fetch_assoc($result);
-    return new Oglas($row['id'], $row['title'], $row['description'],$row['datepublished']);
+    return new Oglas($row['id'], $row['title'], $row['description'],$row['datepublished'], $row['image']);
   }
   
 
@@ -75,8 +77,9 @@ class Oglas {
 
  public static function extendexpiration($id){
     $db = Db::getInstance();
-    $query = "UPDATE ads SET expires= NOW() + INTERVAL 30 DAY WHERE id='$id';";
-    mysqli_stmt_execute($query);
+    $query = "UPDATE ads SET expires=NOW() + INTERVAL 30 DAY WHERE id=$id;";
+    //mysqli_stmt_execute($query);
+    $db->query($query);
  }
  
 }
