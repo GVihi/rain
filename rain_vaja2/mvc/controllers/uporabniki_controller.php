@@ -60,6 +60,11 @@ class uporabniki_controller{
         if($uporabnik->admin == 1){
             $uporabniki = Uporabnik::vsi();
             require_once("views/uporabniki/prikazi.php");
+        }else{
+            $list[] = Uporabnik::najdiEnega($uporabnik->id);
+            $uporabniki = $list;
+            
+            require_once("views/uporabniki/prikazi.php");
         }
         }
     }
