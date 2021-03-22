@@ -36,6 +36,8 @@ class uporabniki_controller{
         if($user != false){
             $_SESSION['USER_NAME'] = $user->username;
             $_SESSION['USER_ID'] = $user->id;
+            $_SESSION["USER_IME"] = $user->name;
+            $_SESSION["USER_EMAIL"] = $user->email;
         }
 
         call('strani', 'domov');

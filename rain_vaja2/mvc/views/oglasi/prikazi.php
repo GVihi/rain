@@ -44,11 +44,11 @@
 
   <div class="mb-3">
     <label for="ime" class="form-label">Ime</label>
-    <input type="text" id="name" class="form-control" >
+    <input type="text" id="name" class="form-control" value="<?php if(isset($_SESSION["USER_NAME"])){ echo $_SESSION["USER_IME"];} ?>" >
   </div>
   <div class="mb-3">
     <label for="ime" class="form-label">Email</label>
-    <input type="text" id="email" class="form-control" >
+    <input type="text" id="email" class="form-control" value="<?php if(isset($_SESSION["USER_NAME"])){ echo $_SESSION["USER_EMAIL"];} ?>" >
   </div>
   <div class="mb-3">
     <label for="ime" class="form-label">Comment</label>
