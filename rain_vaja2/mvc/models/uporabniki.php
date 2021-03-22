@@ -12,8 +12,9 @@
         public $phone;
         public $gender;
         public $age;
+        public $admin;
 
-        public function __construct($id, $username, $password, $name, $surname, $email, $address, $zip, $phone, $gender, $age){
+        public function __construct($id, $username, $password, $name, $surname, $email, $address, $zip, $phone, $gender, $age, $admin){
             $this->id = $id;
             $this->username = $username;
             $this->password = $password;
@@ -26,6 +27,7 @@
             $this->phone = $phone;
             $this->gender = $gender;
             $this->age=$age;
+            $this->admin = $admin;
         }
 
         public static function register($username, $password, $name, $surname, $email, $address, $zip, $phone, $gender, $age){
@@ -55,7 +57,7 @@
 
 
         while($row = mysqli_fetch_assoc($result)){
-        $list[] = new Uporabnik($row['id'], $row['username'], " " ,$row['name'], $row['surname'], $row['email'], $row['address'], $row['zip'], $row['phone'], $row['gender'], $row['age']);
+        $list[] = new Uporabnik($row['id'], $row['username'], " " ,$row['name'], $row['surname'], $row['email'], $row['address'], $row['zip'], $row['phone'], $row['gender'], $row['age'], $row['admin']);
     }
     
         return $list;
@@ -68,7 +70,7 @@
         $db = Db::getInstance();
         $result = mysqli_query($db,"SELECT * FROM users where id=$id");
         $row = mysqli_fetch_assoc($result);
-        return new Uporabnik($row['id'], $row['username'], " " ,$row['name'], $row['surname'], $row['email'], $row['address'], $row['zip'], $row['phone'], $row['gender'], $row['age']);
+        return new Uporabnik($row['id'], $row['username'], " " ,$row['name'], $row['surname'], $row['email'], $row['address'], $row['zip'], $row['phone'], $row['gender'], $row['age'], $row['admin']);
         
      }
 
@@ -95,6 +97,12 @@
             return $user;
         }
         return false;
+     }
+
+     public static function rmusera($id){
+        $db = Db::getInstance();
+        $query = "DELETE FROM users WHERE id=$id;";
+        $db->query($query);
      }
     }
 ?>

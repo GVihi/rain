@@ -47,6 +47,26 @@ class uporabniki_controller{
         session_destroy();
         call('strani','domov');
     }
+
+    public function profil(){
+        $uporabnik = Uporabnik::najdiEnega($_GET["id"]);
+        require_once("views/uporabniki/profil.php");
+        
+    }
+
+    public function prikazivse(){
+        if(isset($_SESSION["USER_ID"])){
+        $uporabnik = Uporabnik::najdiEnega($_SESSION["USER_ID"]);
+        if($uporabnik->admin == 1){
+            $uporabniki = Uporabnik::vsi();
+            require_once("views/uporabniki/prikazi.php");
+        }
+        }
+    }
+
+    public function odstrani(){
+        Uporabnik::rmusera($_GET["id"]);
+    }
       
 }
 

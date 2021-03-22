@@ -1,7 +1,7 @@
-<p>Seznam vseh oglasov</p>
+
 <!-- pogled za pregeld vseh oglasov-->
 <!-- na vrhu damu uporabniku gumb, s katerim proži akcijo dodaj, da lahko dodaja nove uporabnike -->
-<a href="?controller=oglasi&action=dodaj" class="btn btn-primary">Dodaj <i class="fas fa-plus"></i></a>
+<!--<a href="?controller=oglasi&action=dodaj" class="btn btn-primary">Dodaj <i class="fas fa-plus"></i></a>-->
 <div class="table-dark-responsive">
 <table class="table">
   <thead>
