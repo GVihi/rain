@@ -23,7 +23,7 @@ class uporabniki_controller{
     }
 
     public function shraniurejen(){
-        Uporabnik::posodobiuporabnika($_GET["id"], $_POST["username"], $_POST["password"], $_POST["name"], $_POST["surname"],
+        Uporabnik::posodobiurejenega($_GET["id"], $_POST["username"], $_POST["password"], $_POST["name"], $_POST["surname"],
         $_POST["email"], $_POST["address"], $_POST["zip"], $_POST["phone"], "moski", $_POST["age"]);
     }
 

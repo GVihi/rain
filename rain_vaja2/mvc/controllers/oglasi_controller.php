@@ -37,7 +37,7 @@ class oglasi_controller {
 
     //tukaj bi morali še preveriti vrednost uporabniškega vnosa glede varnosti in obstoja
       //podatki so bili običajno posali in pogleda dodaj.php, ki ga je naložila akcija dodaj.
-      $oglas=Oglas::dodaj($_POST["naslov"],$_POST["vsebina"]);
+      $oglas=Oglas::dodaj($_POST["naslov"],$_POST["vsebina"], $_FILES["image"]);
 
     //ko je oglas dodan, imamo v $oglas podatke o tem novem oglasu
     //uporabniku lahko pokažemo pogled, ki ga bo obvestil o uspešnosti oddaje oglasa

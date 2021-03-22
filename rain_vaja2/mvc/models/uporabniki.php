@@ -74,7 +74,7 @@
         
      }
 
-     public static function posodobiurejenga($id, $username, $password, $name, $surname, $email, $address, $zip, $phone, $gender, $age){
+     public static function posodobiurejenega($id, $username, $password, $name, $surname, $email, $address, $zip, $phone, $gender, $age){
         $conn = Db::getInstance();
         $pass = sha1($password);
         $query = "UPDATE users SET username='$username', password='$pass', name='$name', surname='$surname', email='$email', address='$address', zip='$zip', phone='$phone',

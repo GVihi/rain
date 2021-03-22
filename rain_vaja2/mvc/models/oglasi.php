@@ -54,13 +54,19 @@ class Oglas {
 
     //metoda, ki doda nov oglas v bazo
 
-  public static function dodaj($naslov,$vsebina) {
+  public static function dodaj($naslov,$vsebina, $image) {
     
     $db = Db::getInstance();
+
+    //Preberemo vsebino (byte array) slike
+	  $img_file = file_get_contents($image["tmp_name"]);
+	//Pripravimo byte array za pisanje v bazo (v polje tipa LONGBLOB)
+	  $img_file = mysqli_real_escape_string($db, $img_file);
+    
     
 	  //primer query-a s prepared statementom
 
-    if ($stmt = mysqli_prepare($db, "Insert into ads (title, description, datepublished) Values (?,?,now())")) {
+    if ($stmt = mysqli_prepare($db, "Insert into ads (title, description, datepublished, image) Values (?,?,now(), '$img_file');")) {
 			//dodamo parametre po vrsti namesto vprašajev
 			//s string, i integer ,d double, b blob
      mysqli_stmt_bind_param($stmt, "ss",$naslov,$vsebina);
