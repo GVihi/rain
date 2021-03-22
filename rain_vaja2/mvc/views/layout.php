@@ -72,7 +72,7 @@
             <ul class="navbar-nav ml-auto">
               <?php if(isset($_SESSION['USER_ID'])){
                   ?>
-                    <li class="nav-item"><a  class="nav-link" href="#"><i class="fas fa-user"></i><?php echo "Hello " . $_SESSION["USER_NAME"]; ?></a></li>
+                    <li class="nav-item"><a  class="nav-link" href="?controller=uporabniki&action=profil&id=<?php echo $_SESSION["USER_ID"] ?>"><i class="fas fa-user"></i><?php echo "Hello " . $_SESSION["USER_NAME"]; ?></a></li>
                   <?php
               } ?>
               <li class="nav-item"><a  class="nav-link" href="?controller=uporabniki&action=dodaj"><i class="fas fa-user"></i> Registracija</a></li>
